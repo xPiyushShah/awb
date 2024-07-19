@@ -56,7 +56,7 @@
         <h2>Input Form</h2>
         <!-- Form opening with CodeIgniter helper -->
 
-        <form  action="<?php echo base_url();?>InputForm/submitData" method="POST">
+        <form  action="<?php echo base_url();?>/submitData" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>

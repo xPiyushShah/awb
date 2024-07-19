@@ -9,6 +9,6 @@ use App\Controllers\InputForm;
  */
 
 $routes->get('/', 'InputForm::index');
-$routes->post('/InputForm/submitData', 'InputForm::submitData'); 
+// $routes->post('/submitData', 'InputForm::submitData'); 
 $routes->get('/userdata','InputForm::data');
 

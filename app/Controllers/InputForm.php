@@ -22,34 +22,25 @@ class InputForm extends Controller
             $email = $this->request->getPost('email');
             $referid = $this->request->getPost('referid');
     
-            $validation = \Config\Services::validation();
-            // Set validation rules
-            $validation->setRules([
-                'name' => 'required|min_length[3]|max_length[50]',
-                'email' => 'required|valid_email|max_length[100]',
-                'referid' => 'permit_empty|min_length[3]' // Allow referid to be empty but validate if provided
-            ]);
-    
-            if (!$validation->run(['name' => $name, 'email' => $email])) {
-                // If validation fails, reload the form with validation errors
-                $data['validation'] = $validation;
-                return view('input_form', $data);
-            }
+      
     
             $model = new UserModels();
             $dataToSave = [
                 'name' => $name,
                 'email' => $email,
-                'referid' => $referid // It's okay if referid is empty if 'permit_empty' is set
+                'referid' => $referid 
             ];
+            // $model->insertUser($dataToSave);
+            // echo $dataToSave;
+            // exit;
+            echo "<h1>Submitted Data:</h1>";
+            echo "<p>Name: $name</p>";
+            echo "<p>Email: $email</p>";
+            echo "<p>Refer ID: $referid</p>";
     
-            $model->insertUser($dataToSave);
-            echo 'Data inserted successfully!';
-            // Redirect to success page after successful insertion
-            return redirect()->to('/success');
+            // return redirect()->to('/success');
         }
     
-        // Redirect to form page if not submitted via post method
         return redirect()->to('/input-form');
     }
     public function Data()
