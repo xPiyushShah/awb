@@ -6,12 +6,12 @@ use CodeIgniter\Model;
 
 class UserModels extends Model
 {
-    protected $table = 'fail'; // Corrected table name
-    protected $primaryKey = 'user_id'; // Corrected primary key name
-    protected $allowedFields = ['name', 'email', 'referid','amount', 'wallet']; // Updated allowed fields
+    protected $table = 'fail'; 
+    protected $primaryKey = 'user_id'; 
+    protected $allowedFields = ['name', 'email', 'referid','amount', 'wallet']; 
 
     public function insertUser($data)
     {
-        return $this->insert($data); // Insert data into the database
+        return $this->insert($data); 
     }
 }
