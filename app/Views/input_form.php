@@ -80,8 +80,16 @@
     </div>
     <script>
         function submitForm() {
+            let userIdCounter = 1;
+            function generateUserId()
+                {
+                 let userId = `#${userIdCounter.toString().padStart(3, '0')}`;
+                 userIdCounter++; // Increment the counter for the next user
+                 return userId;
+                }
             var form = document.getElementById('myForm');
             var formData = {
+                user_id: generateUserId()
                 name: form.elements['name'].value,
                 email: form.elements['email'].value,
                 referid: form.elements['referid'].value,
