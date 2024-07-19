@@ -26,6 +26,15 @@ class Faildull extends \CodeIgniter\Database\Migration
                 'constraint' => '50',
                 'null'       => true,
             ],
+            'amount'   => [
+                'type'       => 'INT',
+                'null'       => true,
+            ],
+            'wallet'   => [
+                'type'       => 'DECIMAL',
+                'constraint' => '50',
+                'null'       => true,
+            ],
         ]);
         $this->forge->addKey('user_id', true);
         $this->forge->createTable('fail');

@@ -27,8 +27,8 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Amount</th>
             <th>Refer ID</th>
+            <th>Amount </th>
             <th>Wallet</th>
         </tr>
     </thead>
@@ -37,6 +37,8 @@
             <td><?php echo $user['user_id']; ?></td>
             <td><?php echo $user['name']; ?></td>
             <td><?php echo $user['referid']; ?></td>
+            <td><?php echo $user['amount']; ?></td>
+            <td><?php echo $user['wallet']; ?></td>
             
         </tr>
     <?php endforeach; ?>
