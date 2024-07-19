@@ -54,31 +54,50 @@
 <body>
     <div class="container">
         <h2>Input Form</h2>
-        <!-- Form opening with CodeIgniter helper -->
 
-        <form  action="<?php echo base_url();?>/submitData" method="POST">
+        <form id="myForm" action="<?php echo base_url('submitData'); ?>" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
-                <!-- Display validation errors if any -->
-           
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-                <!-- Display validation errors if any -->
-            
             </div>
             <div class="form-group">
                 <label for="referid">Refer ID:</label>
                 <input type="text" id="referid" name="referid">
-                <!-- Display validation errors if any -->
-            
             </div>
             <div class="form-group">
-                <input type="submit" value="Submit">
+                <input type="button" value="Submit" onclick="submitForm()">
             </div>
-</form>
+        </form>
     </div>
+    <script>
+        function submitForm() {
+            var form = document.getElementById('myForm');
+            var formData = {
+                name: form.elements['name'].value,
+                email: form.elements['email'].value,
+                referid: form.elements['referid'].value
+            };
+            console.log(formData);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '<?php echo base_url('submitData'); ?>');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log('Data saved successfully!');
+                    form.reset();
+                } else {
+                    console.error('Failed to save data');
+                }
+            };
+
+            xhr.send(JSON.stringify(formData));
+        }
+    </script>
 </body>
 </html>

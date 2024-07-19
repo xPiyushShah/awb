@@ -17,32 +17,26 @@ class InputForm extends Controller
     {
         helper(['form']);
     
-        if ($this->request->getMethod() === 'post') {
-            $name = $this->request->getPost('name');
-            $email = $this->request->getPost('email');
-            $referid = $this->request->getPost('referid');
-    
-      
-    
+
+        $json = $this->request->getJSON();
+        
+        $name = $json->name;
+        $email = $json->email;
+        $referid = $json->referid;
+        
             $model = new UserModels();
             $dataToSave = [
                 'name' => $name,
                 'email' => $email,
                 'referid' => $referid 
             ];
-            // $model->insertUser($dataToSave);
-            // echo $dataToSave;
-            // exit;
-            echo "<h1>Submitted Data:</h1>";
-            echo "<p>Name: $name</p>";
-            echo "<p>Email: $email</p>";
-            echo "<p>Refer ID: $referid</p>";
-    
-            // return redirect()->to('/success');
-        }
-    
-        return redirect()->to('/input-form');
-    }
+            
+            $model->insertUser($dataToSave);
+
+            return $this->response->setStatusCode(200)->setJSON(['message' => 'Data saved successfully']);
+           
+        }   
+
     public function Data()
     {   
         $fetchModel = new Cuted(); 

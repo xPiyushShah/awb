@@ -10,8 +10,8 @@ class UserModels extends Model
     protected $primaryKey = 'user_id'; // Corrected primary key name
     protected $allowedFields = ['name', 'email', 'referid']; // Updated allowed fields
 
-    public function insertUser($data)
+    public function insertUser($dataToSave)
     {
-        return $this->insert($data); // Insert data into the database
+        return $this->insert($dataToSave); // Insert data into the database
     }
 }
