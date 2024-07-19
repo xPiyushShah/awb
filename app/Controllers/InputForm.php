@@ -21,19 +21,19 @@ class InputForm extends Controller
             $email = $this->request->getPost('email');
             $referid = $this->request->getPost('referid');
     
-            // $validation = \Config\Services::validation();
-            // // Set validation rules
-            // $validation->setRules([
-            //     'name' => 'required|min_length[3]|max_length[50]',
-            //     'email' => 'required|valid_email|max_length[100]',
-            //     'referid' => 'permit_empty|min_length[3]' // Allow referid to be empty but validate if provided
-            // ]);
+            $validation = \Config\Services::validation();
+            // Set validation rules
+            $validation->setRules([
+                'name' => 'required|min_length[3]|max_length[50]',
+                'email' => 'required|valid_email|max_length[100]',
+                'referid' => 'permit_empty|min_length[3]' // Allow referid to be empty but validate if provided
+            ]);
     
-            // if (!$validation->run(['name' => $name, 'email' => $email])) {
-            //     // If validation fails, reload the form with validation errors
-            //     $data['validation'] = $validation;
-            //     return view('input_form', $data);
-            // }
+            if (!$validation->run(['name' => $name, 'email' => $email])) {
+                // If validation fails, reload the form with validation errors
+                $data['validation'] = $validation;
+                return view('input_form', $data);
+            }
     
             $model = new UserModels();
             $dataToSave = [
