@@ -3,18 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\UserModels;
+use App\Models\Cuted;
 use CodeIgniter\Controller;
 
 class InputForm extends Controller
 {
     public function index()
     {
-        helper(['form']); // Load form helper here
+        helper(['form']); 
         return view('input_form');
     }
     public function submitData()
     {
-        helper(['form']); // Load form helper here if not already loaded
+        helper(['form']);
     
         if ($this->request->getMethod() === 'post') {
             $name = $this->request->getPost('name');
@@ -50,5 +51,11 @@ class InputForm extends Controller
     
         // Redirect to form page if not submitted via post method
         return redirect()->to('/input-form');
+    }
+    public function Data()
+    {   
+        $fetchModel = new Cuted(); 
+        $data['users'] = $fetchModel->findAll(); 
+        return view('userdata', $data);
     }
 }
