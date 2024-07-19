@@ -23,12 +23,15 @@ class InputForm extends Controller
         $name = $json->name;
         $email = $json->email;
         $referid = $json->referid;
+        $amount = $json->amount;
+
         
             $model = new UserModels();
             $dataToSave = [
                 'name' => $name,
                 'email' => $email,
-                'referid' => $referid 
+                'referid' => $referid,
+                'amount'=> $amount
             ];
             
             $model->insertUser($dataToSave);

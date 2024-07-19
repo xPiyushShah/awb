@@ -30,7 +30,8 @@
             margin-bottom: 5px;
         }
         input[type="text"],
-        input[type="email"] {
+        input[type="email"],
+        input[type="number"] {
             width: calc(100% - 10px);
             padding: 10px;
             font-size: 14px;
@@ -69,6 +70,10 @@
                 <input type="text" id="referid" name="referid">
             </div>
             <div class="form-group">
+                <label for="amount">Amount :</label>
+                <input type="number" id="amount" name="amount">
+            </div>
+            <div class="form-group">
                 <input type="button" value="Submit" onclick="submitForm()">
             </div>
         </form>
@@ -79,9 +84,12 @@
             var formData = {
                 name: form.elements['name'].value,
                 email: form.elements['email'].value,
-                referid: form.elements['referid'].value
+                referid: form.elements['referid'].value,
+                amount: form.elements['amount'].value
             };
             console.log(formData);
+            alert('Data has been post')
+            form.reset();
 
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '<?php echo base_url('submitData'); ?>');
