@@ -8,7 +8,7 @@ class Cuted extends Model
 {
     protected $table      = 'fail';
     protected $primaryKey = 'user_id'; 
-    protected $allowedFields = [ 'name', 'referid','amount', 'wallet']; 
+    protected $allowedFields = ['name', 'email', 'referid','amount', 'wallet']; 
 
     public function __construct()
     {
